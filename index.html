@@ -1,0 +1,2095 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      AI Code Benchmarks - Find the right benchmark to evaluate your AI coder
+    </title>
+    <meta
+      name="description"
+      content="Comprehensive directory of AI code generation and coding benchmarks for programmers and researchers."
+    />
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="public/favicon.svg" />
+
+    <!-- Additional SEO -->
+    <meta
+      name="keywords"
+      content="AI, code generation, benchmarks, LLM, programming, evaluation, HumanEval, CodeT5, software engineering"
+    />
+    <meta name="author" content="AI Benchmarks Directory" />
+    <link
+      rel="canonical"
+      href="https://github.com/sstefan97/ai-code-benchmarks"
+    />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "AI Code Benchmarks",
+        "description": "Comprehensive directory of AI code generation and coding benchmarks for programmers and researchers.",
+        "url": "https://github.com/sstefan97/ai-code-benchmarks",
+        "author": {
+          "@type": "Organization",
+          "name": "AI Benchmarks Directory"
+        },
+        "mainEntity": {
+          "@type": "ItemList",
+          "name": "AI Code Benchmarks Directory",
+          "description": "Curated collection of benchmarks for evaluating AI code generation systems",
+          "numberOfItems": "50+"
+        }
+      }
+    </script>
+    <style>
+      :root {
+        /* Colors */
+        --color-cream-50: rgba(252, 252, 249, 1);
+        --color-cream-100: rgba(255, 255, 253, 1);
+        --color-gray-200: rgba(245, 245, 245, 1);
+        --color-gray-300: rgba(167, 169, 169, 1);
+        --color-gray-400: rgba(119, 124, 124, 1);
+        --color-slate-500: rgba(98, 108, 113, 1);
+        --color-brown-600: rgba(94, 82, 64, 1);
+        --color-charcoal-700: rgba(31, 33, 33, 1);
+        --color-charcoal-800: rgba(38, 40, 40, 1);
+        --color-slate-900: rgba(19, 52, 59, 1);
+        --color-teal-300: rgba(50, 184, 198, 1);
+        --color-teal-400: rgba(45, 166, 178, 1);
+        --color-teal-500: rgba(33, 128, 141, 1);
+
+        /* RGB versions for opacity control */
+        --color-brown-600-rgb: 94, 82, 64;
+        --color-gray-300-rgb: 167, 169, 169;
+        --color-gray-400-rgb: 119, 124, 124;
+
+        /* Semantic tokens */
+        --color-background: var(--color-cream-50);
+        --color-surface: var(--color-cream-100);
+        --color-text: var(--color-slate-900);
+        --color-text-secondary: var(--color-slate-500);
+        --color-primary: var(--color-teal-500);
+        --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+        --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+        --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+        --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+
+        /* Typography */
+        --font-family-base: "Geist", "Inter", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, sans-serif;
+        --font-size-sm: 12px;
+        --font-size-base: 14px;
+        --font-size-lg: 16px;
+        --font-size-xl: 18px;
+        --font-size-2xl: 20px;
+        --font-size-3xl: 24px;
+        --font-weight-medium: 500;
+        --font-weight-semibold: 550;
+        --font-weight-bold: 600;
+        --line-height-tight: 1.2;
+        --line-height-normal: 1.5;
+        --letter-spacing-tight: -0.01em;
+
+        /* Spacing */
+        --space-4: 4px;
+        --space-8: 8px;
+        --space-10: 10px;
+        --space-12: 12px;
+        --space-16: 16px;
+        --space-20: 20px;
+        --space-24: 24px;
+        --space-32: 32px;
+
+        /* Border Radius */
+        --radius-lg: 12px;
+        --radius-full: 9999px;
+
+        /* Shadows */
+        --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04),
+          0 1px 2px rgba(0, 0, 0, 0.02);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+          0 2px 4px -1px rgba(0, 0, 0, 0.02);
+
+        /* Animation */
+        --duration-normal: 250ms;
+        --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* Dark mode */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --color-background: var(--color-charcoal-700);
+          --color-surface: var(--color-charcoal-800);
+          --color-text: var(--color-gray-200);
+          --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+          --color-primary: var(--color-teal-300);
+          --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+          --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+          --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+          --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+        }
+      }
+
+      [data-color-scheme="dark"] {
+        --color-background: var(--color-charcoal-700);
+        --color-surface: var(--color-charcoal-800);
+        --color-text: var(--color-gray-200);
+        --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+        --color-primary: var(--color-teal-300);
+        --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+        --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+        --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+        --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+      }
+
+      [data-color-scheme="light"] {
+        --color-background: var(--color-cream-50);
+        --color-surface: var(--color-cream-100);
+        --color-text: var(--color-slate-900);
+        --color-text-secondary: var(--color-slate-500);
+        --color-primary: var(--color-teal-500);
+        --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+        --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+        --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+        --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: var(--font-size-base);
+        font-family: var(--font-family-base);
+        line-height: var(--line-height-normal);
+        color: var(--color-text);
+        background-color: var(--color-background);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+      }
+
+      /* Header */
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: var(--color-surface);
+        border-bottom: 1px solid var(--color-card-border);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .header-content {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: var(--space-20) var(--space-24);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--space-16);
+      }
+
+      .header-text {
+        flex: 1;
+      }
+
+      .header-title {
+        font-size: var(--font-size-3xl);
+        font-weight: var(--font-weight-bold);
+        color: var(--color-text);
+        margin: 0 0 var(--space-8) 0;
+        letter-spacing: var(--letter-spacing-tight);
+      }
+
+      .header-tagline {
+        font-size: var(--font-size-lg);
+        color: var(--color-text-secondary);
+        margin: 0;
+      }
+
+      /* Dark mode toggle */
+      .theme-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-8);
+        background: var(--color-secondary);
+        border: 1px solid var(--color-card-border);
+        border-radius: var(--radius-full);
+        padding: var(--space-8) var(--space-16);
+        cursor: pointer;
+        font-size: var(--font-size-base);
+        color: var(--color-text);
+        font-family: var(--font-family-base);
+        font-weight: var(--font-weight-medium);
+        transition: all var(--duration-normal) var(--ease-standard);
+        white-space: nowrap;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: var(--space-12);
+      }
+
+      .github-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0;
+        padding: var(--space-8) var(--space-16);
+        border-radius: var(--radius-full);
+        border: 1px solid var(--color-primary);
+        background: var(--color-primary);
+        color: var(--color-cream-50);
+        font-family: var(--font-family-base);
+        font-size: var(--font-size-base);
+        font-weight: var(--font-weight-semibold);
+        text-decoration: none;
+        transition: all var(--duration-normal) var(--ease-standard);
+        white-space: nowrap;
+      }
+
+      .github-icon {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+      }
+
+      .theme-toggle:hover {
+        border-color: var(--color-border);
+        opacity: 0.8;
+      }
+
+      .github-link:hover {
+        filter: brightness(0.95);
+      }
+
+      .theme-toggle:focus {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+      }
+
+      .github-link:focus {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+      }
+
+      .github-icon {
+        width: 18px;
+        height: 18px;
+        display: block;
+      }
+
+      /* Main content */
+      .main-content {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: var(--space-32) var(--space-24);
+        display: flex;
+        gap: var(--space-32);
+        align-items: flex-start;
+      }
+
+      .content-area {
+        flex: 1;
+        min-width: 0;
+      }
+
+      /* Navigation sidebar */
+      .nav-sidebar {
+        position: sticky;
+        top: calc(80px + var(--space-20));
+        width: 240px;
+        flex-shrink: 0;
+      }
+
+      .nav-toggle {
+        display: none;
+        width: 100%;
+        background: var(--color-secondary);
+        border: 1px solid var(--color-card-border);
+        border-radius: var(--radius-lg);
+        padding: var(--space-12) var(--space-16);
+        cursor: pointer;
+        font-size: var(--font-size-base);
+        color: var(--color-text);
+        font-family: var(--font-family-base);
+        font-weight: var(--font-weight-semibold);
+        margin-bottom: var(--space-16);
+        text-align: left;
+        transition: all var(--duration-normal) var(--ease-standard);
+      }
+
+      .nav-toggle:hover {
+        border-color: var(--color-border);
+        opacity: 0.8;
+      }
+
+      .nav-toggle::after {
+        content: "▼";
+        float: right;
+        transition: transform var(--duration-normal) var(--ease-standard);
+      }
+
+      .nav-toggle.active::after {
+        transform: rotate(180deg);
+      }
+
+      .nav-content {
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-card-border);
+        border-radius: var(--radius-lg);
+        padding: var(--space-16);
+      }
+
+      .nav-title {
+        font-size: var(--font-size-base);
+        font-weight: var(--font-weight-bold);
+        color: var(--color-text);
+        margin: 0 0 var(--space-12) 0;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: var(--font-size-sm);
+      }
+
+      .nav-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .nav-item {
+        margin-bottom: var(--space-8);
+      }
+
+      .nav-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .nav-link {
+        display: block;
+        padding: var(--space-8) var(--space-12);
+        border-radius: var(--radius-lg);
+        color: var(--color-text-secondary);
+        text-decoration: none;
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-medium);
+        transition: all var(--duration-normal) var(--ease-standard);
+        line-height: var(--line-height-tight);
+      }
+
+      .nav-link:hover {
+        background-color: var(--color-secondary);
+        color: var(--color-text);
+      }
+
+      .nav-link.active {
+        background-color: var(--color-secondary);
+        color: var(--color-primary);
+        font-weight: var(--font-weight-semibold);
+      }
+
+      /* Category section */
+      .category-section {
+        margin-bottom: var(--space-32);
+        scroll-margin-top: 120px;
+      }
+
+      .category-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .category-title {
+        font-size: var(--font-size-2xl);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-text);
+        margin: 0 0 var(--space-20) 0;
+        letter-spacing: var(--letter-spacing-tight);
+      }
+
+      /* Benchmark grid */
+      .benchmark-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: var(--space-20);
+      }
+
+      /* Benchmark card */
+      .benchmark-card {
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-card-border);
+        border-radius: var(--radius-lg);
+        padding: var(--space-20);
+        transition: all var(--duration-normal) var(--ease-standard);
+        box-shadow: var(--shadow-xs);
+      }
+
+      .benchmark-card:hover {
+        box-shadow: var(--shadow-md);
+        border-color: var(--color-border);
+        transform: translateY(-2px);
+      }
+
+      .benchmark-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: var(--space-12);
+        gap: var(--space-12);
+      }
+
+      .benchmark-name {
+        font-size: var(--font-size-xl);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-primary);
+        margin: 0;
+        line-height: var(--line-height-tight);
+      }
+
+      .benchmark-year {
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-text-secondary);
+        background-color: var(--color-secondary);
+        padding: var(--space-4) var(--space-10);
+        border-radius: var(--radius-full);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .benchmark-tasks {
+        font-size: var(--font-size-sm);
+        color: var(--color-text-secondary);
+        margin: 0 0 var(--space-12) 0;
+        font-weight: var(--font-weight-medium);
+      }
+
+      .benchmark-description {
+        font-size: var(--font-size-base);
+        color: var(--color-text);
+        line-height: 1.6;
+        margin: 0 0 var(--space-12) 0;
+      }
+
+      .benchmark-usage {
+        font-size: var(--font-size-sm);
+        color: var(--color-text-secondary);
+        font-style: italic;
+        margin: 0;
+        padding-top: var(--space-12);
+        border-top: 1px solid var(--color-card-border-inner);
+      }
+
+      .benchmark-usage::before {
+        content: "💡 ";
+        margin-right: var(--space-4);
+      }
+
+      .benchmark-links {
+        margin-top: var(--space-12);
+        padding-top: var(--space-12);
+        border-top: 1px solid var(--color-card-border-inner);
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-8);
+      }
+
+      .benchmark-link {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-4);
+        font-size: var(--font-size-sm);
+        color: var(--color-primary);
+        text-decoration: none;
+        padding: var(--space-4) var(--space-10);
+        border-radius: var(--radius-full);
+        background-color: var(--color-secondary);
+        transition: all var(--duration-normal) var(--ease-standard);
+        font-weight: var(--font-weight-medium);
+      }
+
+      .benchmark-link:hover {
+        opacity: 0.8;
+        transform: translateY(-1px);
+      }
+
+      .benchmark-link::before {
+        content: "🔗";
+        font-size: var(--font-size-sm);
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .nav-sidebar {
+          position: relative;
+          top: 0;
+          width: 100%;
+          order: -1;
+        }
+
+        .nav-toggle {
+          display: block;
+        }
+
+        .nav-content {
+          display: none;
+        }
+
+        .nav-content.active {
+          display: block;
+        }
+
+        .main-content {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: var(--space-16) var(--space-16);
+        }
+
+        .header-title {
+          font-size: var(--font-size-2xl);
+        }
+
+        .header-tagline {
+          font-size: var(--font-size-base);
+        }
+
+        .header-actions {
+          width: 100%;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+          gap: var(--space-8);
+        }
+
+        .header-actions .github-link,
+        .header-actions .theme-toggle {
+          flex: 0 1 auto;
+        }
+
+        .main-content {
+          padding: var(--space-24) var(--space-16);
+        }
+
+        .category-title {
+          font-size: var(--font-size-xl);
+        }
+
+        .benchmark-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .header-title {
+          font-size: var(--font-size-xl);
+        }
+
+        .header-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .header-actions .github-link,
+        .header-actions .theme-toggle {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .benchmark-name {
+          font-size: var(--font-size-lg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-content">
+        <div class="header-text">
+          <h1 class="header-title">AI Code Benchmarks</h1>
+          <p class="header-tagline">
+            Find the right benchmark to evaluate your AI coder
+          </p>
+        </div>
+        <div class="header-actions">
+          <a
+            class="github-link"
+            href="https://github.com/sstefan97/ai-code-benchmarks"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View on GitHub"
+          >
+            <img
+              class="github-icon"
+              src="public/github-mark-white.svg"
+              alt=""
+              aria-hidden="true"
+            />
+          </a>
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Switch to dark mode"
+            aria-pressed="false"
+          >
+            🌙 Dark Mode
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <!-- Navigation Sidebar -->
+      <aside class="nav-sidebar">
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-controls="navContent"
+          aria-expanded="false"
+        >
+          📑 Categories
+        </button>
+        <nav class="nav-content" id="navContent">
+          <h2 class="nav-title">Categories</h2>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="#function-level" class="nav-link"
+                >Function-level Benchmarks</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#competitive-programming" class="nav-link"
+                >Competitive Programming</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#software-engineering" class="nav-link"
+                >Software Engineering</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#repository-contextual" class="nav-link"
+                >Repository & Contextual</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#domain-specific" class="nav-link"
+                >Domain-Specific & SQL</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#multilingual" class="nav-link"
+                >Multilingual & Versatile</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#efficiency-security" class="nav-link"
+                >Efficiency & Security</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#comprehensive-multitask" class="nav-link"
+                >Comprehensive & Multi-Task</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#research-collections" class="nav-link"
+                >Research & Collections</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#evaluation-frameworks" class="nav-link"
+                >Evaluation Frameworks</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#additional-resources" class="nav-link"
+                >Additional Resources</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main content area -->
+      <div class="content-area">
+        <!-- Function-level Benchmarks -->
+        <section class="category-section" id="function-level">
+          <h2 class="category-title">Function-level Benchmarks</h2>
+          <div class="benchmark-grid">
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">HumanEval</h3>
+                <span class="benchmark-year">2021</span>
+              </div>
+              <p class="benchmark-tasks">Python functions</p>
+              <p class="benchmark-description">
+                Hand-written coding problems testing correctness via unit tests;
+                widely used as an LLM standard.
+              </p>
+              <p class="benchmark-usage">Basis for model leaderboards.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/openai/human-eval"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://huggingface.co/datasets/openai/openai_humaneval"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Dataset</a
+                >
+                <a
+                  href="https://evalplus.github.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Leaderboard</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">HumanEval+</h3>
+                <span class="benchmark-year">2023</span>
+              </div>
+              <p class="benchmark-tasks">Python functions (expanded)</p>
+              <p class="benchmark-description">
+                Extension of HumanEval with 80x more tests for rigorous bug
+                catching.
+              </p>
+              <p class="benchmark-usage">Identifies edge cases.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/evalplus/evalplus"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://evalplus.github.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">MBPP</h3>
+                <span class="benchmark-year">2021</span>
+              </div>
+              <p class="benchmark-tasks">Basic Python programming</p>
+              <p class="benchmark-description">
+                Simple problems with crowd-sourced tasks and test cases.
+              </p>
+              <p class="benchmark-usage">Used for beginner LLM assessment.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://huggingface.co/datasets/google-research-datasets/mbpp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Dataset</a
+                >
+                <a
+                  href="https://github.com/evalplus/evalplus"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Evaluation Tool</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">MBPP+</h3>
+                <span class="benchmark-year">2024</span>
+              </div>
+              <p class="benchmark-tasks">Python programming (expanded)</p>
+              <p class="benchmark-description">
+                Enhanced MBPP with more tests for deeper evaluation.
+              </p>
+              <p class="benchmark-usage">More thorough basic code checking.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/evalplus/evalplus"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Competitive Programming & Algorithms -->
+        <section class="category-section" id="competitive-programming">
+          <h2 class="category-title">
+            Competitive Programming &amp; Algorithms
+          </h2>
+          <div class="benchmark-grid">
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">APPS</h3>
+                <span class="benchmark-year">2021</span>
+              </div>
+              <p class="benchmark-tasks">Diverse Python problems</p>
+              <p class="benchmark-description">
+                10,000 problems from online programming contests requiring
+                multi-step algorithmic reasoning.
+              </p>
+              <p class="benchmark-usage">
+                Tests advanced and competition-level coding.
+              </p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/hendrycks/apps"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">CodeContests</h3>
+                <span class="benchmark-year">2022</span>
+              </div>
+              <p class="benchmark-tasks">Multi-platform contest problems</p>
+              <p class="benchmark-description">
+                13,000 coding contest questions from Codeforces, AtCoder, etc.;
+                adopted for AlphaCode.
+              </p>
+              <p class="benchmark-usage">
+                Measures competitive algorithm skills.
+              </p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/google-deepmind/code_contests"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">LiveCodeBench</h3>
+                <span class="benchmark-year">2022–2025</span>
+              </div>
+              <p class="benchmark-tasks">LeetCode, AtCoder, Codeforces</p>
+              <p class="benchmark-description">
+                Continuously updated, contamination-free suite of new
+                programming tasks for realistic, up-to-date evaluation.
+              </p>
+              <p class="benchmark-usage">
+                Latest testbed for general LLM coding.
+              </p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/LiveCodeBench/LiveCodeBench"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://livecodebench.github.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+                <a
+                  href="https://livecodebench.github.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Leaderboard</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">LiveBench</h3>
+                <span class="benchmark-year">2024</span>
+              </div>
+              <p class="benchmark-tasks">General LLM benchmark with coding</p>
+              <p class="benchmark-description">
+                Comprehensive benchmark for evaluating language models across
+                multiple domains including coding tasks.
+              </p>
+              <p class="benchmark-usage">
+                Multi-domain LLM evaluation including code generation.
+              </p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/livebench/livebench"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://livebench.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Software Engineering & Real-World -->
+        <section class="category-section" id="software-engineering">
+          <h2 class="category-title">Software Engineering &amp; Real-World</h2>
+          <div class="benchmark-grid">
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">SWE-Bench</h3>
+                <span class="benchmark-year">2023</span>
+              </div>
+              <p class="benchmark-tasks">GitHub issue resolution</p>
+              <p class="benchmark-description">
+                Evaluates LLM ability to fix real bugs by patching real-world
+                repositories. Variants include SWE-Bench Lite, Verified, and
+                Pro.
+              </p>
+              <p class="benchmark-usage">
+                Closest to practical software engineering.
+              </p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/princeton-nlp/SWE-bench"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://swebench.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+                <a
+                  href="https://swebench.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Leaderboard</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">SWE-Bench Verified</h3>
+                <span class="benchmark-year">2024</span>
+              </div>
+              <p class="benchmark-tasks">Verified GitHub issue resolution</p>
+              <p class="benchmark-description">
+                Curated subset of SWE-Bench with verified, high-quality test
+                cases for more reliable evaluation.
+              </p>
+              <p class="benchmark-usage">
+                Quality-assured real-world bug fixing.
+              </p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/princeton-nlp/SWE-bench"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://swebench.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Leaderboard</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">SWE-Bench Pro</h3>
+                <span class="benchmark-year">2025</span>
+              </div>
+              <p class="benchmark-tasks">Advanced GitHub issue resolution</p>
+              <p class="benchmark-description">
+                More challenging variant of SWE-Bench with complex, multi-file
+                issues requiring sophisticated reasoning.
+              </p>
+              <p class="benchmark-usage">
+                Enterprise-level software engineering challenges.
+              </p>
+              <div class="benchmark-links">
+                <a
+                  href="https://scale.com/swe-bench-pro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Dataset</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">BigCodeBench</h3>
+                <span class="benchmark-year">2024</span>
+              </div>
+              <p class="benchmark-tasks">Function completion</p>
+              <p class="benchmark-description">
+                1,100+ tasks across 139 libraries; tests docstring and
+                instruction completion.
+              </p>
+              <p class="benchmark-usage">
+                Multi-library, realistic code writing.
+              </p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/bigcode-project/bigcodebench"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://bigcode-bench.github.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+                <a
+                  href="https://bigcode-bench.github.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Leaderboard</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Repository and Contextual -->
+        <section class="category-section" id="repository-contextual">
+          <h2 class="category-title">Repository and Contextual</h2>
+          <div class="benchmark-grid">
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">RepoBench</h3>
+                <span class="benchmark-year">2023</span>
+              </div>
+              <p class="benchmark-tasks">Multi-file code completion</p>
+              <p class="benchmark-description">
+                Repository-level challenges testing context retrieval and code
+                prediction across files. Includes RepoBench-R, RepoBench-C,
+                RepoBench-P variants.
+              </p>
+              <p class="benchmark-usage">
+                Simulates real development environments.
+              </p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/Leolty/repobench"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://huggingface.co/datasets/tianyang/repobench_python_v1.1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Dataset (Python)</a
+                >
+                <a
+                  href="https://huggingface.co/datasets/tianyang/repobench_java_v1.1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Dataset (Java)</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">DevEval</h3>
+                <span class="benchmark-year">2024</span>
+              </div>
+              <p class="benchmark-tasks">Large codebases, manual review</p>
+              <p class="benchmark-description">
+                1,874 manually-annotated samples from 117 real-world
+                repositories with reference code and dependencies; mimics real
+                software workflows.
+              </p>
+              <p class="benchmark-usage">In-depth repo code generation.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/Zarrix/DevEval"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">CoderEval</h3>
+                <span class="benchmark-year">2023</span>
+              </div>
+              <p class="benchmark-tasks">Pragmatic code, multi-language</p>
+              <p class="benchmark-description">
+                460 tasks: 230 functions from 43 Python projects and 230 methods
+                from 10 Java projects; assesses real open-source coding patterns
+                beyond standalone functions.
+              </p>
+              <p class="benchmark-usage">Non-trivial, real-world code.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/CoderEval/CoderEval"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://nl2code.github.io/CoderEval"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">ExecRepoBench</h3>
+                <span class="benchmark-year">2024</span>
+              </div>
+              <p class="benchmark-tasks">
+                Repository-level with executable tests
+              </p>
+              <p class="benchmark-description">
+                Repository-level code generation benchmark with executable test
+                cases for comprehensive evaluation.
+              </p>
+              <p class="benchmark-usage">Executable repo-level testing.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://execrepobench.github.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Domain-Specific, Data Science, SQL -->
+        <section class="category-section" id="domain-specific">
+          <h2 class="category-title">Domain-Specific, Data Science, SQL</h2>
+          <div class="benchmark-grid">
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">DS-1000</h3>
+                <span class="benchmark-year">2022</span>
+              </div>
+              <p class="benchmark-tasks">Data science code (Python)</p>
+              <p class="benchmark-description">
+                StackOverflow-sourced, 1,000+ tasks from major data science
+                libraries for realistic data analysis problems.
+              </p>
+              <p class="benchmark-usage">Applied ML/data science LLMs.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/xlang-ai/DS-1000"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://ds1000-code-gen.github.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+                <a
+                  href="https://huggingface.co/datasets/xlang-ai/ds1000"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Dataset</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">ClassEval</h3>
+                <span class="benchmark-year">2023</span>
+              </div>
+              <p class="benchmark-tasks">Python class-level</p>
+              <p class="benchmark-description">
+                100 hand-crafted class-based problems with 410 methods, each
+                with several methods and holistic class context for evaluating
+                class-level code generation.
+              </p>
+              <p class="benchmark-usage">
+                Object-oriented/class-focused code gen.
+              </p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/FudanSELab/ClassEval"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://huggingface.co/datasets/FudanSELab/ClassEval"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Dataset</a
+                >
+                <a
+                  href="https://fudanselab-classeval.github.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Leaderboard</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">ClassEval-T</h3>
+                <span class="benchmark-year">2024</span>
+              </div>
+              <p class="benchmark-tasks">Class-level code translation</p>
+              <p class="benchmark-description">
+                Extension of ClassEval focused on evaluating large language
+                models in class-level code translation tasks.
+              </p>
+              <p class="benchmark-usage">Multi-language class translation.</p>
+              <div class="benchmark-links"></div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">Spider</h3>
+                <span class="benchmark-year">2018</span>
+              </div>
+              <p class="benchmark-tasks">Complex Text-to-SQL</p>
+              <p class="benchmark-description">
+                10,000+ questions across 163 databases; tests compositional and
+                cross-domain generalization for complex semantic parsing.
+              </p>
+              <p class="benchmark-usage">Widely cited for text-to-SQL.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://yale-lily.github.io/spider"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+                <a
+                  href="https://github.com/taoyds/spider"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://yale-lily.github.io/spider"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Leaderboard</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">Spider 2.0</h3>
+                <span class="benchmark-year">2024</span>
+              </div>
+              <p class="benchmark-tasks">Advanced Text-to-SQL</p>
+              <p class="benchmark-description">
+                632 real-world text-to-SQL tasks evaluating language models on
+                enterprise-level text-to-SQL workflows.
+              </p>
+              <p class="benchmark-usage">Enterprise text-to-SQL evaluation.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://spider2-sql.github.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+                <a
+                  href="https://github.com/xlang-ai/Spider2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://spider2-sql.github.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Leaderboard</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">BIRD-SQL</h3>
+                <span class="benchmark-year">2023</span>
+              </div>
+              <p class="benchmark-tasks">Large-scale DB Text-to-SQL</p>
+              <p class="benchmark-description">
+                12,751 questions on 95 large databases (33.4 GB total); the most
+                rigorous and realistic SQL challenge for large-scale database
+                grounded text-to-SQL.
+              </p>
+              <p class="benchmark-usage">
+                Enterprise/real-world database agents.
+              </p>
+              <div class="benchmark-links">
+                <a
+                  href="https://bird-bench.github.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+                <a
+                  href="https://github.com/bird-bench/bird-sql-main"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://bird-bench.github.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Leaderboard</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">WikiSQL</h3>
+                <span class="benchmark-year">2017</span>
+              </div>
+              <p class="benchmark-tasks">Simple Text-to-SQL</p>
+              <p class="benchmark-description">
+                50,000+ simple SQL queries from natural language questions;
+                still used for quick LLM SQL tests on single-table scenarios.
+              </p>
+              <p class="benchmark-usage">Single-table SQL mapping.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/salesforce/WikiSQL"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://huggingface.co/datasets/wiki_sql"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Dataset</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Multilingual & Versatile -->
+        <section class="category-section" id="multilingual">
+          <h2 class="category-title">Multilingual &amp; Versatile</h2>
+          <div class="benchmark-grid">
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">MultiPL-E</h3>
+                <span class="benchmark-year">2022</span>
+              </div>
+              <p class="benchmark-tasks">18 programming languages</p>
+              <p class="benchmark-description">
+                Translates HumanEval/MBPP to 18 languages (Python, C++, Java,
+                Go, Rust, JS, Julia, etc) for scalable multi-language
+                evaluation.
+              </p>
+              <p class="benchmark-usage">Multi-language LLM scoring.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/nuprl/MultiPL-E"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://nuprl.github.io/MultiPL-E"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">CodeXGLUE</h3>
+                <span class="benchmark-year">2020</span>
+              </div>
+              <p class="benchmark-tasks">14 code/text tasks, 10 languages</p>
+              <p class="benchmark-description">
+                Large open-source benchmark with 14 datasets for code
+                understanding and generation: code search, classification,
+                translation, completion, and summarization.
+              </p>
+              <p class="benchmark-usage">Broad capability testing.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/microsoft/CodeXGLUE"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://microsoft.github.io/CodeXGLUE"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Efficiency & Security -->
+        <section class="category-section" id="efficiency-security">
+          <h2 class="category-title">Efficiency &amp; Security</h2>
+          <div class="benchmark-grid">
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">EvalPerf</h3>
+                <span class="benchmark-year">2024</span>
+              </div>
+              <p class="benchmark-tasks">Efficiency tests (Python)</p>
+              <p class="benchmark-description">
+                DPE and runtime measurements for code performance and
+                efficiency, including LeetCode runtime percentile scores.
+              </p>
+              <p class="benchmark-usage">Find optimal/fast code.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/evalplus/evalplus"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://evalplus.github.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">CodeLMSec</h3>
+                <span class="benchmark-year">2023</span>
+              </div>
+              <p class="benchmark-tasks">Security vulnerability check</p>
+              <p class="benchmark-description">
+                CWE-based security challenges systematically evaluating and
+                finding security vulnerabilities in LLM-generated code.
+              </p>
+              <p class="benchmark-usage">Safety/security scoring.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/codelmsec/codelmsec"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://codelmsec.github.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">SafeGenBench</h3>
+                <span class="benchmark-year">2025</span>
+              </div>
+              <p class="benchmark-tasks">Secure code generation</p>
+              <p class="benchmark-description">
+                Static and LLM-based evaluation of code safety using SAST tools
+                and human/AI reviews.
+              </p>
+              <p class="benchmark-usage">Security stress-testing of models.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/thu-coai/SafetyBench"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://codelmsec.github.io/safetybench/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">SecureAgentBench</h3>
+                <span class="benchmark-year">2024</span>
+              </div>
+              <p class="benchmark-tasks">Security under realistic settings</p>
+              <p class="benchmark-description">
+                105 coding tasks with security vulnerability assessment
+                benchmarking secure code generation under realistic development
+                settings.
+              </p>
+              <p class="benchmark-usage">Realistic security evaluation.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/shengyin/safeagentbench"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://arxiv.org/abs/2505.19856"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Paper</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">EffiBench</h3>
+                <span class="benchmark-year">2025</span>
+              </div>
+              <p class="benchmark-tasks">Python efficiency/complexity</p>
+              <p class="benchmark-description">
+                Multi-language, multi-dimensional efficiency, complexity, and
+                runtime speed evaluation of LLM code.
+              </p>
+              <p class="benchmark-usage">
+                Performance and resource optimization analysis.
+              </p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/huangd1999/EffiBench"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://arxiv.org/abs/2401.00895"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Paper</a
+                >
+                <a
+                  href="https://huggingface.co/datasets/effibench"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Dataset</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Comprehensive & Multi-Task -->
+        <section class="category-section" id="comprehensive-multitask">
+          <h2 class="category-title">Comprehensive &amp; Multi-Task</h2>
+          <div class="benchmark-grid">
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">DevBench</h3>
+                <span class="benchmark-year">2024</span>
+              </div>
+              <p class="benchmark-tasks">Software development lifecycle</p>
+              <p class="benchmark-description">
+                Comprehensive benchmark covering the complete software
+                development lifecycle: design, setup, implementation, and
+                testing phases.
+              </p>
+              <p class="benchmark-usage">
+                Full development process evaluation.
+              </p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/THUDM/DevBench"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">DevQualityEval</h3>
+                <span class="benchmark-year">2024</span>
+              </div>
+              <p class="benchmark-tasks">Code generation quality</p>
+              <p class="benchmark-description">
+                Evaluation benchmark and framework specifically designed for
+                assessing code generation quality across multiple dimensions.
+              </p>
+              <p class="benchmark-usage">Quality assessment framework.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/symflower/eval-dev-quality"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Research Repositories & Collections -->
+        <section class="category-section" id="research-collections">
+          <h2 class="category-title">
+            Research Repositories &amp; Collections
+          </h2>
+          <div class="benchmark-grid">
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">Awesome Code Benchmark</h3>
+                <span class="benchmark-year">2024</span>
+              </div>
+              <p class="benchmark-tasks">Benchmark collection</p>
+              <p class="benchmark-description">
+                Comprehensive curated list of code benchmarks and datasets for
+                researchers and practitioners in code generation.
+              </p>
+              <p class="benchmark-usage">Research resource discovery.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/tongye98/Awesome-Code-Benchmark"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">Quality Assessment Study</h3>
+                <span class="benchmark-year">2024</span>
+              </div>
+              <p class="benchmark-tasks">Benchmark analysis</p>
+              <p class="benchmark-description">
+                Analysis and comparison of code generation benchmarks, providing
+                insights into benchmark quality and effectiveness.
+              </p>
+              <p class="benchmark-usage">Meta-analysis of benchmarks.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://s2e-lab.github.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">BigCode Project</h3>
+                <span class="benchmark-year">2022–2024</span>
+              </div>
+              <p class="benchmark-tasks">Open scientific collaboration</p>
+              <p class="benchmark-description">
+                Open scientific collaboration focused on responsible development
+                of large language models for code.
+              </p>
+              <p class="benchmark-usage">Community-driven code LLM research.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/bigcode-project"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://huggingface.co/bigcode"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Hugging Face</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Evaluation Frameworks & Leaderboards -->
+        <section class="category-section" id="evaluation-frameworks">
+          <h2 class="category-title">
+            Evaluation Frameworks &amp; Leaderboards
+          </h2>
+          <div class="benchmark-grid">
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">Hugging Face Model Evaluation</h3>
+                <span class="benchmark-year">2023–2024</span>
+              </div>
+              <p class="benchmark-tasks">Model comparison platform</p>
+              <p class="benchmark-description">
+                Comprehensive model evaluation platform featuring HumanEval/MBPP
+                leaderboards and Codeparrot model collections.
+              </p>
+              <p class="benchmark-usage">Community model benchmarking.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://huggingface.co/spaces/bigcode/bigcodebench"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Leaderboard</a
+                >
+                <a
+                  href="https://huggingface.co/codeparrot"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Models</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">Vellum AI LLM Leaderboard</h3>
+                <span class="benchmark-year">2024–2025</span>
+              </div>
+              <p class="benchmark-tasks">Coding model comparison</p>
+              <p class="benchmark-description">
+                Specialized leaderboard focusing on coding model performance and
+                comparative analysis across different benchmarks.
+              </p>
+              <p class="benchmark-usage">Commercial coding model evaluation.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://vellum.ai/llm-leaderboard-2025"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Leaderboard</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">Artificial Analysis</h3>
+                <span class="benchmark-year">2024</span>
+              </div>
+              <p class="benchmark-tasks">AI model comparison</p>
+              <p class="benchmark-description">
+                Independent AI model comparison and analysis platform providing
+                objective performance metrics and insights.
+              </p>
+              <p class="benchmark-usage">Independent model analysis.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://artificialanalysis.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">DeepEval</h3>
+                <span class="benchmark-year">2024</span>
+              </div>
+              <p class="benchmark-tasks">LLM evaluation framework</p>
+              <p class="benchmark-description">
+                Open-source evaluation framework for large language models with
+                extensible metrics and testing capabilities.
+              </p>
+              <p class="benchmark-usage">Custom evaluation pipelines.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://github.com/confident-ai/deepeval"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >GitHub</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Additional Resources -->
+        <section class="category-section" id="additional-resources">
+          <h2 class="category-title">Additional Resources</h2>
+          <div class="benchmark-grid">
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">Stanford AI Index Report</h3>
+                <span class="benchmark-year">2024</span>
+              </div>
+              <p class="benchmark-tasks">Annual AI progress report</p>
+              <p class="benchmark-description">
+                Comprehensive annual report including technical performance
+                section with latest LLM code generation benchmarks and trends.
+              </p>
+              <p class="benchmark-usage">Industry trend analysis.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://hai.stanford.edu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Website</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">ArXiv Paper Search</h3>
+                <span class="benchmark-year">Ongoing</span>
+              </div>
+              <p class="benchmark-tasks">Research paper discovery</p>
+              <p class="benchmark-description">
+                Direct access to latest research papers on code generation
+                benchmarks and LLM evaluation methodologies.
+              </p>
+              <p class="benchmark-usage">Academic research tracking.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://arxiv.org/search/?query=code+generation+benchmark"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Code Generation</a
+                >
+                <a
+                  href="https://arxiv.org/search/?query=LLM+evaluation+code"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >LLM Evaluation</a
+                >
+              </div>
+            </article>
+
+            <article class="benchmark-card">
+              <div class="benchmark-header">
+                <h3 class="benchmark-name">Papers with Code</h3>
+                <span class="benchmark-year">Ongoing</span>
+              </div>
+              <p class="benchmark-tasks">Research with implementations</p>
+              <p class="benchmark-description">
+                Platform connecting research papers with their code
+                implementations, featuring code generation benchmarks and
+                leaderboards.
+              </p>
+              <p class="benchmark-usage">Implementation-focused research.</p>
+              <div class="benchmark-links">
+                <a
+                  href="https://paperswithcode.com/task/code-generation"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Code Generation</a
+                >
+                <a
+                  href="https://paperswithcode.com/benchmarks"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="benchmark-link"
+                  >Benchmarks</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      // Dark mode toggle functionality
+      const themeToggle = document.getElementById("themeToggle");
+      const html = document.documentElement;
+
+      // Check for saved theme preference or default to light mode
+      const currentTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
+      let theme = currentTheme;
+
+      // Set initial theme
+      html.setAttribute("data-color-scheme", theme);
+      updateToggleButton(theme);
+
+      // Toggle theme on button click
+      themeToggle.addEventListener("click", () => {
+        theme = theme === "light" ? "dark" : "light";
+        html.setAttribute("data-color-scheme", theme);
+        updateToggleButton(theme);
+      });
+
+      function updateToggleButton(currentTheme) {
+        const isDarkMode = currentTheme === "dark";
+        themeToggle.textContent = isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode";
+        themeToggle.setAttribute(
+          "aria-label",
+          isDarkMode ? "Switch to light mode" : "Switch to dark mode"
+        );
+        themeToggle.setAttribute("aria-pressed", String(isDarkMode));
+      }
+
+      // Navigation toggle functionality (for mobile)
+      const navToggle = document.getElementById("navToggle");
+      const navContent = document.getElementById("navContent");
+
+      navToggle.addEventListener("click", () => {
+        navContent.classList.toggle("active");
+        navToggle.classList.toggle("active");
+        const isExpanded = navToggle.classList.contains("active");
+        navToggle.setAttribute("aria-expanded", String(isExpanded));
+      });
+
+      // Smooth scroll to sections
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href").substring(1);
+          const targetSection = document.getElementById(targetId);
+
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: "smooth" });
+            const newHash = `#${targetId}`;
+            if (window.location.hash !== newHash) {
+              window.history.pushState(null, "", newHash);
+            } else {
+              window.history.replaceState(null, "", newHash);
+            }
+
+            // Close mobile nav if open
+            if (window.innerWidth <= 1024) {
+              navContent.classList.remove("active");
+              navToggle.classList.remove("active");
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
